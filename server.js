@@ -8,7 +8,6 @@ const process = require('process');
 
 require("dotenv").config()
 
-app.use(express.static("./client/build"))
 app.use(express.json())
 app.use(morgan("dev"))
 app.use(express.static(path.join(__dirname, "client", "build")));
