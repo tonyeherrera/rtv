@@ -6,11 +6,11 @@ const {expressjwt} = require("express-jwt")
 const path = require("path")
 const process = require('process');
 
-require("dotenv").config()
+require("dotenv").config
 
 app.use(express.json())
 app.use(morgan("dev"))
-app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 
 mongoose.connect(process.env.MONGODB_URI, ()=> console.log("Connected to DB"))
