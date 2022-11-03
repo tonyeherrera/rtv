@@ -1,11 +1,12 @@
 const express = require("express")
 const app = express()
-require("dotenv").config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const {expressjwt} = require("express-jwt")
-const path = require("path");
-const process = require('process')
+const path = require("path")
+const process = require('process');
+
+require("dotenv").config()
 
 app.use(express.static("./client/build"))
 app.use(express.json())
