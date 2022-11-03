@@ -31,8 +31,8 @@ app.use((err, req, res, next) => {
     return res.send({errMsg: err.message})
 })
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
 })
 
 const port = process.env.PORT || 9000
