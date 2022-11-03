@@ -18,15 +18,5 @@
   },
   "engines":{
     "node":"16.14.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tonyeherrera/rtv.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tonyeherrera/rtv/issues"
   }
 }
