@@ -7,6 +7,7 @@ const {expressjwt} = require("express-jwt")
 const path = require("path");
 const process = require('process')
 
+app.use(express.static("./client/build"))
 app.use(express.json())
 app.use(morgan("dev"))
 app.use(express.static(path.join(__dirname, "client", "build")));
