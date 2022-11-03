@@ -21,12 +21,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tonyeherrera/rock-the-vote.git"
+    "url": "git+https://github.com/tonyeherrera/rtv.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tonyeherrera/rock-the-vote/issues"
+    "url": "https://github.com/tonyeherrera/rtv/issues"
   }
 }

@@ -6,7 +6,10 @@ const {expressjwt} = require("express-jwt")
 const path = require("path")
 const process = require('process');
 
-require("dotenv").config
+require("dotenv").config()
+
+process.env.MONGODB_URI
+process.env.SECRET
 
 app.use(express.json())
 app.use(morgan("dev"))
