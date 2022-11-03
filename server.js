@@ -4,21 +4,22 @@ require("dotenv").config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const {expressjwt} = require("express-jwt")
-const path = require("path")
+const path = require("path");
+const process = require('process')
 
 app.use(express.json())
-app.use(express.static(path.join(_dirname, "client", "build")))
 app.use(morgan("dev"))
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 
 mongoose.connect(process.env.MONGODB_URI, ()=> console.log("Connected to DB"))
 
 const secret = process.env.SECRET || "something different"
 
-app.use('/auth', require('./routes/authRouter.js'))
+app.use('/auth', require(path.join(__dirname,'routes','authRouter.js')))
 app.use('/api', expressjwt({ secret, algorithms: ['HS256']}))
-app.use('/api/topics', require('./routes/topicsRouter.js'))
-app.use('/api/topic/comments', require('./routes/commentsRouter.js'))
+app.use('/api/topics', require(path.join(__dirname,'routes','topicsRouter.js')))
+app.use('/api/topic/comments', require(path.join(__dirname,'routes','commentsRouter.js')))
 
 app.use((err, req, res, next) => {
     console.log(err)
