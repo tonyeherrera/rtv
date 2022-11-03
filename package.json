@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "heroku-postbuild":"cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "engines":{
+    "node":"16.14.2"
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
@@ -11,12 +18,5 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.5",
     "morgan": "^1.10.0"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild":"cd client && npm install --only=dev && npm install && npm run build"
-  },
-  "engines":{
-    "node":"16.14.2"
   }
 }
