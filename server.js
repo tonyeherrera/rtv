@@ -6,7 +6,7 @@ const {expressjwt} = require("express-jwt")
 const path = require("path")
 const process = require('process');
 
-require("dotenv").config
+require("dotenv").config()
 
 app.use(express.static("./client/build"))
 app.use(express.json())
