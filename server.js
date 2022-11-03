@@ -4,14 +4,19 @@ require("dotenv").config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const {expressjwt} = require("express-jwt")
+const path = require("path")
 
 app.use(express.json())
+app.use(express.static(path.join(_dirname, "client", "build")))
 app.use(morgan("dev"))
 
-mongoose.connect(`mongodb+srv://tonyeherrera:${process.env.MONGOPASSWORD}@cluster0.v8uoayq.mongodb.net/?retryWrites=true&w=majority`, ()=> console.log("Connected to DB"))
+
+mongoose.connect(process.env.MONGODB_URI, ()=> console.log("Connected to DB"))
+
+const secret = process.env.SECRET || "something different"
 
 app.use('/auth', require('./routes/authRouter.js'))
-app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256']}))
+app.use('/api', expressjwt({ secret, algorithms: ['HS256']}))
 app.use('/api/topics', require('./routes/topicsRouter.js'))
 app.use('/api/topic/comments', require('./routes/commentsRouter.js'))
 
@@ -23,6 +28,12 @@ app.use((err, req, res, next) => {
     return res.send({errMsg: err.message})
 })
 
-app.listen(9000, () => {
+app.get("*", (req, res) => {
+    res.sendFile(path.join(_dirname, "client", "build", "index.html"))
+})
+
+const port = process.env.PORT || 9000
+
+app.listen(port, () => {
     console.log('Server is running on local port 9000')
 })
